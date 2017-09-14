@@ -1,28 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace TestLab
+namespace ProblemTest
 {
     [TestClass]
-    internal class Class1_Test
+    public class Problem2Test
     {
         [TestMethod]
-        private void Sum_Test()
+        public void GetEvenSumLessThan4Million_Test()
         {
-            Assert.AreEqual(5, Class1.Sum(10));
-            Assert.AreEqual(89, Class1.Sum(11));
-            Assert.AreEqual(144, Class1.Sum(12));
-            Assert.AreEqual(233, Class1.Sum(13));
+            long result = Problem.Problem2.GetEvenSumLessThan4Million();
+            Assert.AreEqual(4613732, result);
         }
 
         [TestMethod]
-        private void Sum3_Test()
+        public void Fib4MillionLimit_Test()
         {
-            Assert.AreEqual(4613732L, Class1.Sum3());
+            //long result = Problem.Problem2.Fib4MillionLimit(5);
+            //Assert.AreEqual(4613732, result);
         }
     }
 }

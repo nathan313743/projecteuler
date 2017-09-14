@@ -1,56 +1,55 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
-namespace TestLab
+namespace Problem
 {
-    internal class Class1
+    public class Problem2
     {
-        public static int Sum(int n)
+        public static long GetEvenSumLessThan4Million()
+        {
+            long previousValue = 0L;
+            long currentValue = 1L;
+            long sum = 0L;
+
+            while (true)
+            {
+                long temp = currentValue;
+                currentValue = previousValue + currentValue;
+                previousValue = temp;
+
+                if (currentValue > 4000000L)
+                {
+                    return sum;
+                }
+
+                if (currentValue % 2 == 0)
+                {
+                    sum += currentValue;
+                }
+            }
+        }
+         
+        public static int Fib(int n)
         {
             if (n == 0 || n == 1)
             {
                 return n;
             }
 
-            return Sum(n - 1) + Sum(n - 2);
+            return Fib(n - 1) + Fib(n - 2);
         }
 
-        public static long Sum2(int n)
+        // Currently produces stackoverflow
+        public static long Fib4MillionLimit(int n)
         {
             if (n > 4000000L)
             {
                 return n;
             }
 
-            var v1 = Sum2(n + 1);
-            var v2 = Sum2(n + 2);
+            var v1 = Fib4MillionLimit(n + 1);
+            var v2 = Fib4MillionLimit(n + 2);
 
             return v1 + v2;
-        }
-
-        public static long Sum3()
-        {
-            long i = 0L;
-            long j = 1L;
-            long sum = 0L;
-
-            while (true)
-            {
-                long temp = j;
-                j = i + j;
-                i = temp;
-
-                if (j % 2 == 0)
-                {
-                    if (j > 4000000L)
-                        return sum;
-
-                    sum += j;
-                }
-            }
         }
     }
 }

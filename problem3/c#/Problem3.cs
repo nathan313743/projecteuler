@@ -1,3 +1,4 @@
+using System;
 /*
 # Problem 3
 
@@ -24,16 +25,16 @@ namespace Problem3
                 return n;
             }
 
-            long halfOfN = n / 2;
+            long squareOfN = (long)Math.Sqrt(n);
 
-            if (halfOfN % 2 == 0)
+            if (squareOfN % 2 == 0)
             {
                 // No point checking even numbers.
                 // Therefore, we must start on an odd number
-                halfOfN = halfOfN - 1;
+                squareOfN = squareOfN - 1;
             }
 
-            for (long i = halfOfN; i >= 0; i = i - 2)
+            for (long i = squareOfN; i >= 0; i = i - 2)
             {
                 if (IsFactor(n, i))
                 {
@@ -63,7 +64,7 @@ namespace Problem3
             return false;
         }
 
-
+        //https://stackoverflow.com/questions/5811151/why-do-we-check-up-to-the-square-root-of-a-prime-number-to-determine-if-it-is-pr
         public static bool IsPrimeNumber(long n)
         {
             if (n < 2)

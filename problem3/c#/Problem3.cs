@@ -19,7 +19,7 @@ namespace Problem3
 
             for(int i = 2; i < m; ++i)
             {
-                while(i % 2 ==0)
+                while(n % i ==0)
                 {
                     n = n / i;
                    

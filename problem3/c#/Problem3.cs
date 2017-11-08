@@ -13,6 +13,27 @@ namespace Problem3
     public static class Problem3
     {
 
+        public static long FindLargestPrimeFactor2(long n)
+        {
+            long m = (long)Math.Sqrt(n);
+
+            for(int i = 2; i < m; ++i)
+            {
+                while(i % 2 ==0)
+                {
+                    n = n / i;
+                   
+                    if(i == 1 || n == i)
+                    {
+                        return i;
+                    }
+                }
+            } 
+
+            return n;
+        }
+
+
         public static long FindLargestPrimeFactor(long n)
         {
             if (n <= 2)

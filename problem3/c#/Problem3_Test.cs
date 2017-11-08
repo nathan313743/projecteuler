@@ -34,7 +34,7 @@ namespace Problem3
             Assert.IsFalse(Problem3.IsFactor(5, 2));
         }
 
-        
+
         [TestMethod]
         public void IsFactor_True()
         {
@@ -52,6 +52,16 @@ namespace Problem3
             Assert.AreEqual(5, Problem3.FindLargestPrimeFactor(10));
             Assert.AreEqual(29, Problem3.FindLargestPrimeFactor(13195));
             Assert.AreEqual(6857, Problem3.FindLargestPrimeFactor(600851475143));
+        }
+
+        [TestMethod]
+        public void FindLargestPrimeFactor2_Test()
+        {
+            Assert.AreEqual(2, Problem3.FindLargestPrimeFactor(2));
+            Assert.AreEqual(5, Problem3.FindLargestPrimeFactor2(5));
+            Assert.AreEqual(5, Problem3.FindLargestPrimeFactor2(10));
+            Assert.AreEqual(29, Problem3.FindLargestPrimeFactor2(13195));
+            Assert.AreEqual(6857, Problem3.FindLargestPrimeFactor2(600851475143));
         }
     }
 }

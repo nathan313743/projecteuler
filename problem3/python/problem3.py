@@ -6,31 +6,35 @@ class PrimeFactorTest(unittest.TestCase):
     def setUp(self):
         self.prime_factor = PrimeFactor()
     
-    def test_is_prime_number_true(self):
-        self.assertTrue(self.prime_factor.is_prime_number(2))
-        self.assertTrue(self.prime_factor.is_prime_number(3))
-        self.assertTrue(self.prime_factor.is_prime_number(5))
-        self.assertTrue(self.prime_factor.is_prime_number(7))
-        self.assertTrue(self.prime_factor.is_prime_number(11))
+    def test_sum_amount_1000(self):
+        self.assertEqual(2, self.prime_factor.largest_prime_factor(2))
+        self.assertEqual(5, self.prime_factor.largest_prime_factor(5))
+        self.assertEqual(5, self.prime_factor.largest_prime_factor(10))
+        self.assertEqual(29, self.prime_factor.largest_prime_factor(13195))
+        self.assertEqual(6857, self.prime_factor.largest_prime_factor(600851475143))
         
-    def test_is_prime_number_false(self):
-        self.assertFalse(self.prime_factor.is_prime_number(4))
-        self.assertFalse(self.prime_factor.is_prime_number(6))
-        self.assertFalse(self.prime_factor.is_prime_number(8))
-        self.assertFalse(self.prime_factor.is_prime_number(9))
-        self.assertFalse(self.prime_factor.is_prime_number(10))
-        
-class PrimeFactor:
-    def is_prime_number(self, n):
-        if n < 2:
-            return false
-        i = 2
+        # The following takes too long as we cannot reduce the original number
+        # self.assertEqual(600851475149, self.prime_factor.largest_prime_factor(600851475149))
 
-        while(i * i <= n):
-            if n % i == 0:
-                return False
-            i += 1
-        return True
+class PrimeFactor:
+    
+    def largest_prime_factor(self, num):
+        largest_factor = 1
+ 
+        # remove any factors of 2 first
+        while num % 2 == 0:
+            largest_factor = 2
+            num = num // 2
+    
+        # now look at odd factors
+        divisor = 3
+        while num != 1:
+            while num % divisor == 0:
+                largest_factor = divisor
+                num = num // divisor
+            divisor += 2
+    
+        return largest_factor
 
 if __name__ == '__main__':
     unittest.main()
